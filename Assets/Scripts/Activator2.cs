@@ -8,7 +8,7 @@ public class Activator2 : MonoBehaviour
     public KeyCode Key;
     bool active = false;
     public bool creatorMode;
-    public GameObject n;
+    public GameObject n, gm;
     Color old;
     SpriteRenderer sr;
 
@@ -20,6 +20,7 @@ public class Activator2 : MonoBehaviour
 
     void Start()
     {
+        gm = GameObject.Find("GameManager2");
         old = sr.color;
         PlayerPrefs.SetInt("big pp", 0);
     }
@@ -44,8 +45,13 @@ public class Activator2 : MonoBehaviour
             if (Input.GetKeyDown(Key) && active)
             {
                 Destroy(note);
+                gm.GetComponent<GameManager2>().AddStreak2();
                 AddScore();
                 active = false;
+            }
+            else if (Input.GetKeyDown(Key) && !active)
+            {
+                gm.GetComponent<GameManager2>().ResetStreak2();
             }
         }
     }
@@ -62,11 +68,12 @@ public class Activator2 : MonoBehaviour
     void OnTriggerExit2D(Collider2D col)
     {
         active = false;
+        //gm.GetComponent<GameManager>().ResetStreak();
     }
 
     void AddScore()
     {
-        PlayerPrefs.SetInt("big pp", PlayerPrefs.GetInt("big pp") + 100);
+        PlayerPrefs.SetInt("big pp", PlayerPrefs.GetInt("big pp") + gm.GetComponent<GameManager2>().GetScore2());
     }
 
     IEnumerator Pressed()

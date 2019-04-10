@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
     int multiplier = 2;
     int streak = 0;
 
+    int multiplier2 = 2;
+    int streak2 = 0;
+
     // Start is called before the first frame update
     void Start()
     {
