@@ -42,6 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Curtain
+    uniqueID: 65456637
+    locked: 0
+  - name: Lanes
+    uniqueID: 3833797345
+    locked: 0
   - name: Activator
     uniqueID: 1326432911
     locked: 0
