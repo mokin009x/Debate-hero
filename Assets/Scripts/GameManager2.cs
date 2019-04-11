@@ -7,6 +7,8 @@ public class GameManager2 : MonoBehaviour
     int multiplier2 = 2;
     int streak2 = 0;
 
+    public GameObject text2;
+
     public void AddStreak2()
     {
         streak2++;
@@ -20,6 +22,11 @@ public class GameManager2 : MonoBehaviour
             multiplier2 = 1;
         UpdateGUI2();
         Debug.Log(streak2);
+
+        if (streak2 >= 5)
+        {
+            text2.SetActive(true);
+        }
     }
 
     public void ResetStreak2()

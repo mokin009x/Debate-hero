@@ -10,10 +10,17 @@ public class GameManager : MonoBehaviour
     int multiplier2 = 2;
     int streak2 = 0;
 
+    public GameObject text;
+    public GameObject text2;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        PlayerPrefs.SetInt("Crowd", 25);
+        text = GameObject.Find("pp");
+        text.SetActive(false);
+        text2 = GameObject.Find("pp2");
+        text2.SetActive(false);
     }
 
     // Update is called once per frame
@@ -30,21 +37,33 @@ public class GameManager : MonoBehaviour
 
     public void AddStreak()
     {
+        PlayerPrefs.SetInt("Crowd", PlayerPrefs.GetInt("Crowd") + 1);
         streak++;
-        if (streak >= 24)      
+        if (streak >= 24)
             multiplier = 4;
-        else if (streak >= 16)       
+        else if (streak >= 16)
             multiplier = 3;
-        else if (streak >= 8)    
+        else if (streak >= 8)
             multiplier = 2;
         else
             multiplier = 1;
         UpdateGUI();
         Debug.Log(streak);
+
+        if(streak>= 5)
+        {
+            text.SetActive(true);
+        }
+        if (streak >= 8)
+        {
+            text2.SetActive(true);
+            text.SetActive(false);
+        }
     }
 
     public void ResetStreak()
     {
+        PlayerPrefs.SetInt("Crowd", PlayerPrefs.GetInt("Crowd") - 1);
         streak = 0;
         multiplier = 1;
         UpdateGUI();

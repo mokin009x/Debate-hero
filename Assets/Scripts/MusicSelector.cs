@@ -12,6 +12,7 @@ public class MusicSelector : MonoBehaviour
     public AudioClip selectedSong;
     public bool gameStarted;
     private AudioSource source;
+    Result result;
     
     // Start is called before the first frame update
     private void Awake()
@@ -22,8 +23,8 @@ public class MusicSelector : MonoBehaviour
 
     void Start()
     {
-        startScreen = GameObject.Find("Canvas").transform.GetChild(0).gameObject;
-        songSelectScreen = GameObject.Find("Canvas").transform.GetChild(1).gameObject;
+        startScreen = GameObject.Find("Canvas").transform.GetChild(8).gameObject;
+        songSelectScreen = GameObject.Find("Canvas").transform.GetChild(9).gameObject;
         songSelectScreen.SetActive(false);
         source = GetComponent<AudioSource>();
     }
@@ -44,6 +45,7 @@ public class MusicSelector : MonoBehaviour
     {
         _notes.SetActive(true);
         StartCoroutine(SongDelay(_notes));
+        EndSong(selectedSong);
     }
 
    
@@ -66,5 +68,11 @@ public class MusicSelector : MonoBehaviour
                 gameStarted = true;
             }
         }
+    }
+
+    IEnumerator EndSong(AudioClip clippy)
+    {
+        yield return new WaitForSeconds(5);
+        result.Compare();
     }
 }
