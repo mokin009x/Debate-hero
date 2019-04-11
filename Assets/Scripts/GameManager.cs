@@ -12,8 +12,16 @@ public class GameManager : MonoBehaviour
 
     public GameObject text;
     public GameObject text2;
+    public GameObject text3;
+
+    GameManager instance;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         PlayerPrefs.SetInt("Crowd", 25);
@@ -21,6 +29,8 @@ public class GameManager : MonoBehaviour
         text.SetActive(false);
         text2 = GameObject.Find("pp2");
         text2.SetActive(false);
+        text3 = GameObject.Find("pp3");
+        text3.SetActive(false);
     }
 
     // Update is called once per frame
@@ -53,10 +63,19 @@ public class GameManager : MonoBehaviour
         if(streak>= 5)
         {
             text.SetActive(true);
+            text2.SetActive(false);
+            text3.SetActive(false);
         }
         if (streak >= 8)
         {
             text2.SetActive(true);
+            text.SetActive(false);
+            text3.SetActive(false);
+        }
+        if (streak >= 10)
+        {
+            text3.SetActive(true);
+            text2.SetActive(false);
             text.SetActive(false);
         }
     }
