@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -60,7 +61,7 @@ public class GameManager : MonoBehaviour
         UpdateGUI();
         Debug.Log(streak);
 
-        if(streak>= 5)
+        /*if(streak>= 5)
         {
             text.SetActive(true);
             text2.SetActive(false);
@@ -77,7 +78,7 @@ public class GameManager : MonoBehaviour
             text3.SetActive(true);
             text2.SetActive(false);
             text.SetActive(false);
-        }
+        }*/
     }
 
     public void ResetStreak()

@@ -23,6 +23,7 @@ public class MusicSelector : MonoBehaviour
 
     void Start()
     {
+        result = Result.instance;
         startScreen = GameObject.Find("Canvas").transform.GetChild(8).gameObject;
         songSelectScreen = GameObject.Find("Canvas").transform.GetChild(9).gameObject;
         songSelectScreen.SetActive(false);
@@ -45,7 +46,7 @@ public class MusicSelector : MonoBehaviour
     {
         _notes.SetActive(true);
         StartCoroutine(SongDelay(_notes));
-        EndSong(selectedSong);
+        StartCoroutine(EndSong(selectedSong));
     }
 
    
@@ -72,7 +73,7 @@ public class MusicSelector : MonoBehaviour
 
     IEnumerator EndSong(AudioClip clippy)
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(clippy.length + 5);
         result.Compare();
     }
 }

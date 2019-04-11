@@ -9,6 +9,13 @@ public class GameManager2 : MonoBehaviour
 
     public GameObject text2;
 
+    GameManager2 instance;
+
+    public void Awake()
+    {
+        instance = this;
+    }
+
     public void AddStreak2()
     {
         streak2++;
